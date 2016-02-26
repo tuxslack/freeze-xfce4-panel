@@ -1,0 +1,11 @@
+Package: duzeru-freezepanel
+Version: 1.1.0
+Architecture: all
+Maintainer: Claudio A. Silva <claudiosilva@duzeru.org>
+Installed-Size: 400
+Depends:
+Section: acessories
+Priority: optional
+Homepage: http://github.com/duzeru.org/
+Description: Freeze and unfreeze the panel of Xfce in Debian and derivates
+ Congelar e descongelar o painel do Xfce em distros baseada em Debian

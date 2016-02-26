@@ -1,0 +1,2 @@
+?package(duzeru-freezepanel):needs="X11" section="Applications/System/Administration"\
+  title="duzeru-freezepanel" command="/usr/bin/duzeru-freezepanel"
