@@ -48,20 +48,18 @@ echo -e '*====================================================================*
 ||     \e[m\e[34;1m #####%¨ "####"#######  "####  ##     "####" \e[32;1mGNU\e[m\e[33;1m/\e[m\e[32;1mLinux\e[m\e[32;1m_/ \_ \e[m ||
 *====================================================================*'
 
-echo -e '\e[32;1m PT \e[m'
-echo -e '\e[32;1m Vou auxiliar na segurança do painel,preciso da senha.\e[m'
-echo -e '\e[31;1m  ATENÇÃO! \e[m                                          '
-echo -e '\e[32;1m Após digitar a senha, o sistema será reiniciado.     \e[m'
+echo -e '\e[32;1m\033[0;0mVou auxiliar na segurança do painel,preciso da senha.\e[32;1m\e[m'
+echo -e '\e[32;1m\033[0;0m \e[31;1mATENÇÃO! \e[m                                           \e[32;1m\e[m'
+echo -e '\e[32;1m\033[0;0mApós digitar a senha, o sistema será reiniciado.     \e[32;1m\e[m'
 echo ''
-echo -e '\e[33;1m EN \e[m'
-echo -e '\e[33;1m I will assist in security panel, i need the root pass.\e[m'
-echo -e '\e[31;1m  WARNING!                                             \e[m'
-echo -e '\e[33;1m After entering the password, the system will reboot.  \e[m'
+echo -e '\e[32;1m\033[0;0mI will assist in security panel, i need the root pass.\e[32;1m\e[m'
+echo -e '\e[32;1m\033[0;0m \e[31;1mWARNING! \e[m                                            \e[32;1m\e[m'
+echo -e '\e[32;1m\033[0;0mAfter entering the password, the system will reboot.  \e[32;1m\e[m'
 ##############FIM APRESENTAÇÃO ###############################
 
 echo ''
-echo -e '\e[31;1m   d \e[m \e[32;1m Decongelar painel \e[m - \e[33;1m Unfreeze panel \e[m'
-echo -e '\e[31;1m   c \e[m \e[32;1m Congelar painel   \e[m - \e[33;1m Freeze panel \e[m'
+echo -e '\e[31;1m   d \e[m Decongelar painel  Unfreeze panel'
+echo -e '\e[31;1m   c \e[m Congelar painel    Freeze panel'
 read opcao
 
 ############## ESCOLHA PAINEL ###################
