@@ -189,9 +189,9 @@ Versão do painel: `xfce4-panel --version`
 
     # Envia notificação sobre o arquivo de log
 
-    notify-send -t 40000 -i edit-paste "Panel do xfce" \
+    notify-send -t 40000 -i edit-paste "Painel do xfce" \
 "
-Ao final do processo verifica o arquivo de log $log.
+Ao final do processo verifica o arquivo de log: $log.
 "
 
 # ----------------------------------------------------------------------------------------
@@ -216,11 +216,11 @@ echo -e '
 
 echo -e "\n\e[32;1mVou auxiliar na segurança do painel, preciso da senha.\e[m"
 echo -e "\e[31;1mATENÇÃO!\e[m"
-echo -e "\e[32;1mApós digitar a senha, o sistema será reiniciado.\e[m"
+echo -e "\e[32;1mApós digitar a senha, o painel será reiniciado.\e[m"
 echo ''
 echo -e "\e[32;1mI will assist in security panel, I need the root password.\e[m"
 echo -e "\e[31;1mWARNING!\e[m"
-echo -e "\e[32;1mAfter entering the password, the system will reboot.\e[m"
+echo -e "\e[32;1mAfter entering the password, the panel will reboot. \n\n\e[m"
 
 
 ############## FIM APRESENTAÇÃO ###############################
@@ -232,7 +232,7 @@ yad \
 --window-icon="$logotipo" \
 --info \
 --title="Segurança do Painel" \
---text="Vou auxiliar na segurança do painel.\n\n⚠️ ATENÇÃO ⚠️\n\nApós digitar a senha, o sistema será reiniciado.\n\nI will assist in security panel, I need the root pass.\n\n⚠️ WARNING ⚠️\n\nAfter entering the password, the system will reboot." \
+--text="Vou auxiliar na segurança do painel.\n\n⚠️ ATENÇÃO ⚠️\n\nApós digitar a senha, o painel será reiniciado.\n\n\nI will assist in security panel, I need the root pass.\n\n⚠️ WARNING ⚠️\n\nAfter entering the password, the panel will reboot." \
 --buttons-layout=center \
 --button=Cancelar:1 --button=OK:0 \
 2>/dev/null
@@ -241,6 +241,8 @@ yad \
 
 if [ "$?" == "1" ];
 then 
+
+     clear
 
      exit
      
@@ -258,12 +260,21 @@ yad --center \
     --text="Escolha a ação desejada para o painel XFCE." \
     --buttons-layout=center \
     --button="❄️ Congelar painel":0 \
-    --button="🔓 Decongelar painel":1 \
+    --button="🔓 Decongelar painel":2 \
     --width="450" --height="150" \
      2>/dev/null
 
 resposta=$?
 
+
+if [ "$?" == "1" ];
+then 
+
+     clear
+
+     exit
+     
+fi
 
 
 ############## Lógica de Escolha ###############################
@@ -315,7 +326,11 @@ if [ "$resposta" -eq 0 ]; then
     xfce4-panel --restart
 
 
-else
+    ls -l "$PASTA_SISTEMA"
+
+
+
+elif [ "$resposta" -eq 2 ]; then
 
 
     # 🔓 Descongelar (Unfreeze):
@@ -357,10 +372,15 @@ else
     xfce4-panel --restart
 
 
+    ls -l "$PASTA_SISTEMA"
+
+
 fi
 
 
 # ----------------------------------------------------------------------------------------
+
+clear
 
 exit 0
 
