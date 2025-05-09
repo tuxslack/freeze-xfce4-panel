@@ -92,7 +92,7 @@ which yad           1> /dev/null 2> /dev/null || { echo "Programa Yad não esta 
 
 
 
-REQUIRED_CMDS=(sudo shutdown cp sed xfce4-panel notify-send)
+REQUIRED_CMDS=(sudo shutdown cp sed xfce4-panel notify-send xfce4-terminal)
 
 
 for cmd in "${REQUIRED_CMDS[@]}"; do
