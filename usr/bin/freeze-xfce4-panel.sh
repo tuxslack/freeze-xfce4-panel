@@ -99,7 +99,7 @@ for cmd in "${REQUIRED_CMDS[@]}"; do
 
     if ! command -v "$cmd" >/dev/null 2>&1; then
 
-        yad --center --error --title="Erro de Dependência" --text="O comando \"$cmd\" não está instalado ou não está no PATH." 2>/dev/null
+        yad --center --window-icon="$logotipo" --error --title="Erro de Dependência" --text="O comando \"$cmd\" não está instalado ou não está no PATH." 2>/dev/null
 
         exit 1
     fi
@@ -111,6 +111,8 @@ done
 # ----------------------------------------------------------------------------------------
 
 # Caminhos:
+
+logotipo="/usr/share/pixmaps/duzeru-freezepanel.png"
 
 
 # Pasta do usuário: 
@@ -139,7 +141,7 @@ log="/tmp/xfce4-panel.log"
 
 if [ "$XDG_CURRENT_DESKTOP" != "XFCE" ] && [ "$XDG_SESSION_DESKTOP" != "xfce" ]; then
 
-    yad --center --error --title="Ambiente Incompatível" --text="Este script só pode ser executado no ambiente gráfico XFCE."
+    yad --center --window-icon="$logotipo" --error --title="Ambiente Incompatível" --text="Este script só pode ser executado no ambiente gráfico XFCE."
 
     exit 1
 
@@ -152,7 +154,7 @@ fi
 
 if [ ! -d "$PASTA_USUARIO" ] || [ ! -f "$PASTA_USUARIO/$ARQUIVO" ]; then
 
-    yad --center --error --title="Erro" --text="Arquivo ou pasta do usuário não encontrados: $PASTA_USUARIO/$ARQUIVO"
+    yad --center --window-icon="$logotipo" --error --title="Erro" --text="Arquivo ou pasta do usuário não encontrados: $PASTA_USUARIO/$ARQUIVO"
 
     exit 1
 fi
@@ -160,7 +162,7 @@ fi
 
 if [ ! -d "$PASTA_SISTEMA" ]; then
 
-    yad --center --error --title="Erro" --text="Pasta do sistema não encontrada: $PASTA_SISTEMA" --button=OK:0 2>/dev/null
+    yad --center --window-icon="$logotipo" --error --title="Erro" --text="Pasta do sistema não encontrada: $PASTA_SISTEMA" --button=OK:0 2>/dev/null
 
     exit 1
 fi
@@ -226,6 +228,7 @@ echo -e "\e[32;1mAfter entering the password, the system will reboot.\e[m"
 
 yad \
 --center \
+--window-icon="$logotipo" \
 --info \
 --title="Segurança do Painel" \
 --text="Vou auxiliar na segurança do painel.\n\n⚠️ ATENÇÃO ⚠️\n\nApós digitar a senha, o sistema será reiniciado.\n\nI will assist in security panel, I need the root pass.\n\n⚠️ WARNING ⚠️\n\nAfter entering the password, the system will reboot." \
@@ -243,10 +246,11 @@ fi
 ############## Escolha da opção ###################
  
 
-# resposta=$(yad --center --entry --title="Painel XFCE" --text="Escolha uma opção:\n\nd - Descongelar painel (Unfreeze)\nc - Congelar painel (Freeze)" --entry-text="d" "c")
+# resposta=$(yad --center --window-icon="$logotipo" --entry --title="Painel XFCE" --text="Escolha uma opção:\n\nd - Descongelar painel (Unfreeze)\nc - Congelar painel (Freeze)" --entry-text="d" "c")
 
 
 yad --center \
+    --window-icon="$logotipo" \
     --title="Painel XFCE" \
     --button="❄️ Congelar painel":0 \
     --button="🔓 Decongelar painel":1 \
@@ -284,7 +288,7 @@ if [ "$resposta" -eq 0 ]; then
 
     # Exibe uma mensagem com o yad e reinicia o sistema para aplicar a configuração.
 
-    # yad --center --info --title="Congelar Painel" --text="Você escolheu travar.\nO sistema será reiniciado para aplicar as configurações." --button=OK:0 2>/dev/null
+    # yad --center --window-icon="$logotipo" --info --title="Congelar Painel" --text="Você escolheu travar.\nO sistema será reiniciado para aplicar as configurações." --button=OK:0 2>/dev/null
 
 
     # echo "Você escolheu travar, aguarde vou reiniciar para 
@@ -297,7 +301,7 @@ if [ "$resposta" -eq 0 ]; then
 
 
 
-    yad --center --info --title="Congelar Painel" --text="Você escolheu travar.\nO painel será reiniciado agora para aplicar as configurações." --button=OK:0 2>/dev/null
+    yad --center --window-icon="$logotipo" --info --title="Congelar Painel" --text="Você escolheu travar.\nO painel será reiniciado agora para aplicar as configurações." --button=OK:0 2>/dev/null
 
     echo "Você escolheu travar. Reiniciando o painel XFCE..."
 
@@ -327,7 +331,7 @@ else
 
     # Exibe uma mensagem e reinicia novamente o sistema para aplicar.
 
-    # yad --center --info --title="Descongelar Painel" --text="Você escolheu destravar.\nO sistema será reiniciado para aplicar as configurações." --button=OK:0 2>/dev/null
+    # yad --center --window-icon="$logotipo" --info --title="Descongelar Painel" --text="Você escolheu destravar.\nO sistema será reiniciado para aplicar as configurações." --button=OK:0 2>/dev/null
 
     # echo "Você escolheu destravar, aguarde vou reiniciar para 
 # finalizar as configurações até logo..."
@@ -339,7 +343,7 @@ else
 
 
 
-    yad --center --info --title="Descongelar Painel" --text="Você escolheu destravar.\nO painel será reiniciado agora para aplicar as configurações." --button=OK:0 2>/dev/null
+    yad --center --window-icon="$logotipo" --info --title="Descongelar Painel" --text="Você escolheu destravar.\nO painel será reiniciado agora para aplicar as configurações." --button=OK:0 2>/dev/null
 
     echo "Você escolheu destravar. Reiniciando o painel XFCE..."
 
